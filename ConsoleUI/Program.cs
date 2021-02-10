@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using System;
 
@@ -7,6 +8,17 @@ namespace ConsoleUI
     class Program
     {
         static void Main(string[] args)
+        {
+            //InMemoryTest();
+
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine(car.CarName + "/" + car.ColorName + "/"+ car.Description + "/" + car.DailyPrice);
+            }
+        }
+
+        private static void InMemoryTest()
         {
             CarManager carManager = new CarManager(new InMemoryCarDal());
 
@@ -18,7 +30,7 @@ namespace ConsoleUI
                 Console.WriteLine(car.Description);
                 Console.WriteLine("----");
                 Console.WriteLine(car.DailyPrice);
-                
+
             }
         }
     }
