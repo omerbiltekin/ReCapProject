@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -16,23 +18,28 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
-            Console.WriteLine("deleted.");
+            return new SuccessResult(Messages.BrandDeleted);
         }
 
-        public List<Brand> GetAll()
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brandDal.GetAll();
+            if (DateTime.Now.Hour == 22)
+            {
+                return new ErrorDataResult<List<Brand>>(Messages.BrandMaintenanceTime);
+            }
+
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandListed);
         }
 
-        public Brand GetById(int id)
+        public IDataResult<Brand> GetById(int id)
         {
-            return _brandDal.Get(c => c.BrandId == id);
+            return new SuccessDataResult<Brand> (_brandDal.Get(c => c.BrandId == id));
         }
 
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
             {
                 if (brand.BrandName.Length >= 2)
@@ -45,6 +52,9 @@ namespace Business.Concrete
                     Console.WriteLine($"Please " +
                     $" Enter the length of the brand name more than 1 character. Brand name :  {brand.BrandName}");
                 }
-        }   }
+              
+                return new SuccessResult(Messages.ColorUpdated);
+            }
+        }
     }
 }
