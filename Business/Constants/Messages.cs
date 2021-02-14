@@ -20,5 +20,18 @@ namespace Business.Constants
         public static List<Brand> BrandMaintenanceTime;
         public static string BrandListed = "Brand listed";
         public static string BrandUpdated = "Brand updated";
+        public static string CustomerAdded = "Customer added";
+        public static string CustomerDeleted = "Customer deleted";
+        public static string CustomerListed = "Customer listed";
+        public static string CustomerUpdated = "Customer updated";
+        public static string NotAvailable = "Not available";
+        public static string RentalAdded = "Rental added";
+        public static string RentalDeleted = "Rental deleted";
+        public static string RentalUpdated = "Rental updated";
+        public static string RentalListed = "Rental listed";
+        public static string UserAdded = "User added";
+        public static string UserDeleted = "User deleted";
+        public static string UserUpdated = "User updated";
+        public static string UserListed = "User listed";
     }
 }
