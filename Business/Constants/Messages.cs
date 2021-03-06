@@ -1,6 +1,7 @@
 ﻿using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -33,5 +34,13 @@ namespace Business.Constants
         public static string UserDeleted = "User deleted";
         public static string UserUpdated = "User updated";
         public static string UserListed = "User listed";
+        public static string AuthorizationDenied = "You are not authorized";
+        public static string UserRegistered = "User registered";
+        public static string UserNotFound = "User not found";
+        public static string PasswordError = "Password is wrong";
+        public static string SuccessfulLogin = "Login successful";
+        public static string UserAlreadyExists = "Username is already taken";
+        public static string AccessTokenCreated = "Token created";
+
     }
 }
